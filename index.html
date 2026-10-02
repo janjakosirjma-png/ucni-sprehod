@@ -1254,7 +1254,7 @@ function positionReaderBy360Hotspot(id){
 
 <div id="toolbar">
 
-  <button id="mapBtn" aria-label="Zemljevid" title="Zemljevid">🗺️</button>
+  <button id="mapBtn">🗺️</button>
   <button id="editCurrentPointBtn" type="button">✏️ UREDI</button>
   
   <div id="locationBadge" aria-live="polite">📍 JANJA
@@ -1283,14 +1283,9 @@ function positionReaderBy360Hotspot(id){
 
 </div>
 <div id="drawBar">
-  <button id="toolPencil" type="button" title="Svinčnik" style="display:none!important">✏️</button>
   <button id="toolBrush" type="button" title="Čopič">🖌️</button>
-  <button id="toolLine" type="button" title="Črta" style="display:none!important">╱</button>
-  <button id="toolRect" type="button" title="Pravokotnik" style="display:none!important">▭</button>
-  <button id="toolCircle" type="button" title="Krog" style="display:none!important">○</button>
   <input id="toolColor" type="color" value="#ff0000" title="Barva">
   <input id="toolSize" type="range" min="2" max="24" value="5" title="Debelina">
-  <button id="toolUndo" type="button" title="Razveljavi" style="display:none!important">↶</button>
   <button id="toolClear" type="button" title="Počisti">🗑</button>
 </div>
 
@@ -1776,8 +1771,9 @@ const normalAhaCardEdit=$("normalAhaCardEdit");
 let openNormalAhaId=null;
 
 const drawBar=$("drawBar");
-const toolPencil=$("toolPencil"),toolBrush=$("toolBrush"),toolLine=$("toolLine"),toolRect=$("toolRect"),toolCircle=$("toolCircle");
-const toolColor=$("toolColor"),toolSize=$("toolSize"),toolUndo=$("toolUndo"),toolClear=$("toolClear");
+const hiddenDrawTool=()=>({classList:{add(){},remove(){}},onclick:null});
+const toolPencil=hiddenDrawTool(),toolBrush=$("toolBrush"),toolLine=hiddenDrawTool(),toolRect=hiddenDrawTool(),toolCircle=hiddenDrawTool();
+const toolColor=$("toolColor"),toolSize=$("toolSize"),toolUndo=hiddenDrawTool(),toolClear=$("toolClear");
 
 
 /* Samodejna prepoznava:
