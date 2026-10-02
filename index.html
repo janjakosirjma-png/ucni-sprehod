@@ -1056,6 +1056,64 @@ function positionReaderBy360Hotspot(id){
   #drawBar input[type=range]{width:78px!important;min-width:78px!important;flex-basis:78px!important;}
 }
 
+
+/* ===== TELEFON: ENAKA DVOJNA VRSTICA KOT NA RACUNALNIKU, LE MANJSA ===== */
+@media (max-width:760px), (pointer:coarse){
+  #toolbar{
+    top:max(4px,env(safe-area-inset-top))!important;
+    bottom:auto!important;
+    left:max(4px,env(safe-area-inset-left))!important;
+    right:auto!important;
+    width:max-content!important;
+    max-width:calc(100vw - 8px - env(safe-area-inset-left) - env(safe-area-inset-right))!important;
+    height:38px!important; min-height:38px!important; max-height:38px!important;
+    padding:3px!important; gap:3px!important; border-radius:10px!important;
+    flex-wrap:nowrap!important; justify-content:flex-start!important;
+    overflow-x:auto!important; overflow-y:hidden!important;
+  }
+  #toolbar button,#toolbar #locationBadge{
+    height:32px!important; min-height:32px!important; min-width:32px!important;
+    padding:0 7px!important; font-size:11px!important; line-height:1!important;
+    border-radius:7px!important; flex:0 0 auto!important; white-space:nowrap!important;
+  }
+  #locationBadge{width:auto!important;order:0!important;}
+
+  #drawBar{
+    top:calc(max(4px,env(safe-area-inset-top)) + 42px)!important;
+    bottom:auto!important;
+    left:max(4px,env(safe-area-inset-left))!important;
+    right:auto!important;
+    width:max-content!important;
+    max-width:calc(100vw - 8px - env(safe-area-inset-left) - env(safe-area-inset-right))!important;
+    height:42px!important; min-height:42px!important; max-height:42px!important;
+    padding:3px!important; gap:3px!important; border-radius:10px!important;
+    flex-wrap:nowrap!important; justify-content:flex-start!important;
+    overflow-x:auto!important; overflow-y:hidden!important;
+  }
+  #drawBar button{
+    flex:0 0 34px!important; width:34px!important; min-width:34px!important;
+    height:34px!important; min-height:34px!important; padding:0!important;
+    font-size:22px!important; border-radius:7px!important;
+  }
+  #drawBar #toolBrush,#drawBar #toolRect,#drawBar #toolCircle{font-size:24px!important;}
+  #drawBar input[type=color]{flex:0 0 34px!important;width:34px!important;min-width:34px!important;height:34px!important;padding:2px!important;border-radius:7px!important;}
+  #drawBar input[type=range]{flex:0 0 68px!important;width:68px!important;min-width:68px!important;margin:0 2px!important;}
+  #pointBadge{top:calc(max(4px,env(safe-area-inset-top)) + 88px)!important;}
+  #popup{top:calc(max(4px,env(safe-area-inset-top)) + 88px)!important;bottom:auto!important;max-height:calc(100vh - 98px - env(safe-area-inset-bottom))!important;}
+}
+/* Lezec telefon: vrstici skupaj zavzameta priblizno 70 px, ne tretjine zaslona. */
+@media (orientation:landscape) and (max-height:520px){
+  #toolbar{height:34px!important;min-height:34px!important;max-height:34px!important;padding:2px!important;}
+  #toolbar button,#toolbar #locationBadge{height:30px!important;min-height:30px!important;min-width:30px!important;font-size:10px!important;padding:0 6px!important;}
+  #drawBar{top:calc(max(4px,env(safe-area-inset-top)) + 38px)!important;height:36px!important;min-height:36px!important;max-height:36px!important;padding:2px!important;}
+  #drawBar button{width:30px!important;min-width:30px!important;height:30px!important;min-height:30px!important;flex-basis:30px!important;font-size:20px!important;}
+  #drawBar #toolBrush,#drawBar #toolRect,#drawBar #toolCircle{font-size:22px!important;}
+  #drawBar input[type=color]{width:30px!important;min-width:30px!important;height:30px!important;flex-basis:30px!important;}
+  #drawBar input[type=range]{width:62px!important;min-width:62px!important;flex-basis:62px!important;}
+  #pointBadge{top:calc(max(4px,env(safe-area-inset-top)) + 78px)!important;}
+  #popup{top:calc(max(4px,env(safe-area-inset-top)) + 78px)!important;max-height:calc(100vh - 86px - env(safe-area-inset-bottom))!important;}
+}
+
 </style>
 </head>
 
