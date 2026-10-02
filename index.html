@@ -995,6 +995,27 @@ function positionReaderBy360Hotspot(id){
   #pointBadge{top:118px!important;}
 }
 
+
+/* ===== KONČNI POPRAVEK: samo zahtevana pisalna orodja + pravilen telefon ===== */
+#drawBar .writingToolHidden{display:none!important;}
+@media(max-width:760px),(pointer:coarse){
+  #toolbar{
+    bottom:auto!important;
+    height:auto!important;
+    max-height:none!important;
+    align-items:center!important;
+  }
+  #toolbar button{
+    height:44px!important;
+    min-height:44px!important;
+  }
+  #drawBar{
+    bottom:auto!important;
+    height:auto!important;
+    max-height:none!important;
+    align-items:center!important;
+  }
+}
 </style>
 </head>
 
@@ -1283,9 +1304,14 @@ function positionReaderBy360Hotspot(id){
 
 </div>
 <div id="drawBar">
+  <button class="writingToolHidden" id="toolPencil" type="button" title="Svinčnik">✏️</button>
   <button id="toolBrush" type="button" title="Čopič">🖌️</button>
+  <button class="writingToolHidden" id="toolLine" type="button" title="Črta">╱</button>
+  <button class="writingToolHidden" id="toolRect" type="button" title="Pravokotnik">▭</button>
+  <button class="writingToolHidden" id="toolCircle" type="button" title="Krog">○</button>
   <input id="toolColor" type="color" value="#ff0000" title="Barva">
   <input id="toolSize" type="range" min="2" max="24" value="5" title="Debelina">
+  <button class="writingToolHidden" id="toolUndo" type="button" title="Razveljavi">↶</button>
   <button id="toolClear" type="button" title="Počisti">🗑</button>
 </div>
 
@@ -1771,9 +1797,8 @@ const normalAhaCardEdit=$("normalAhaCardEdit");
 let openNormalAhaId=null;
 
 const drawBar=$("drawBar");
-const hiddenDrawTool=()=>({classList:{add(){},remove(){}},onclick:null});
-const toolPencil=hiddenDrawTool(),toolBrush=$("toolBrush"),toolLine=hiddenDrawTool(),toolRect=hiddenDrawTool(),toolCircle=hiddenDrawTool();
-const toolColor=$("toolColor"),toolSize=$("toolSize"),toolUndo=hiddenDrawTool(),toolClear=$("toolClear");
+const toolPencil=$("toolPencil"),toolBrush=$("toolBrush"),toolLine=$("toolLine"),toolRect=$("toolRect"),toolCircle=$("toolCircle");
+const toolColor=$("toolColor"),toolSize=$("toolSize"),toolUndo=$("toolUndo"),toolClear=$("toolClear");
 
 
 /* Samodejna prepoznava:
