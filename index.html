@@ -1017,7 +1017,7 @@ function positionReaderBy360Hotspot(id){
   }
   #drawBar #toolBrush,#drawBar #toolClear{display:flex!important; width:46px!important; min-width:46px!important; height:44px!important; min-height:44px!important; flex:0 0 46px!important; padding:0!important;}
   #drawBar #toolColor{display:block!important; width:44px!important; min-width:44px!important; height:44px!important; flex:0 0 44px!important;}
-  #drawBar #toolSize{display:block!important; width:90px!important; min-width:90px!important; height:44px!important; flex:0 0 90px!important;}
+  #drawBar #toolSize{display:block!important; width:150px!important; min-width:150px!important; height:44px!important; flex:0 0 150px!important; margin:0 4px!important; touch-action:none!important;}
   #toolPencil,#toolLine,#toolRect,#toolCircle,#toolUndo{display:none!important;}
   #pointBadge{top:118px!important;}
 }
@@ -1814,6 +1814,18 @@ let openNormalAhaId=null;
 const drawBar=$("drawBar");
 const toolPencil=$("toolPencil"),toolBrush=$("toolBrush"),toolLine=$("toolLine"),toolRect=$("toolRect"),toolCircle=$("toolCircle");
 const toolColor=$("toolColor"),toolSize=$("toolSize"),toolUndo=$("toolUndo"),toolClear=$("toolClear");
+
+/* Ohrani izbrano debelino čopiča tudi po ponovni izbiri orodja / točke. */
+const BRUSH_SIZE_KEY="stable-360-brush-size";
+try{
+  const savedBrushSize=localStorage.getItem(BRUSH_SIZE_KEY);
+  if(savedBrushSize!==null) toolSize.value=savedBrushSize;
+}catch(e){}
+function rememberBrushSize(){
+  try{localStorage.setItem(BRUSH_SIZE_KEY,toolSize.value);}catch(e){}
+}
+toolSize.addEventListener("input",rememberBrushSize);
+toolSize.addEventListener("change",rememberBrushSize);
 
 
 /* Samodejna prepoznava:
@@ -3664,7 +3676,7 @@ function saveSpatialStroke(screenPoints,modeAtSave){
     id:"sd-"+Date.now()+"-"+Math.random().toString(36).slice(2,6),
     points,
     color:toolColor.value,
-    size:Number(toolSize.value)*(modeAtSave==="brush"?1.8:1)
+    size:Number(toolSize.value)*(modeAtSave==="brush"?2.3:1)
   });
   saveTour();
   renderSpatialDrawings();
