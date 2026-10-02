@@ -10,9 +10,7 @@
 
 <title>360° VR ogled</title>
 
-<script src="https://aframe.io/releases/1.7.1/aframe.min.js">
-try{enableAhaDrag(document.getElementById('popup'));}catch(_){}
-</script>
+<script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
 
 <style>
 *{
@@ -304,7 +302,6 @@ textarea:focus-visible{
 
 function resetReaderPanelPosition(){
   const panel=document.querySelector("#readerOverlay .panel");
-  enableAhaDrag(panel);
   if(!panel)return;
   panel.style.position="";
   panel.style.left="";
@@ -998,122 +995,6 @@ function positionReaderBy360Hotspot(id){
   #pointBadge{top:118px!important;}
 }
 
-
-/* ===== KONČNI MOBILNI POPRAVEK: brez konfliktov med starimi media pravili ===== */
-@media (max-width:760px), (pointer:coarse){
-  #toolbar{
-    top:max(6px,env(safe-area-inset-top))!important;
-    bottom:auto!important;
-    left:max(6px,env(safe-area-inset-left))!important;
-    right:auto!important;
-    width:auto!important;
-    max-width:calc(100vw - max(12px,env(safe-area-inset-left) + env(safe-area-inset-right)))!important;
-    max-height:56px!important;
-    min-height:0!important;
-    flex-wrap:nowrap!important;
-    justify-content:flex-start!important;
-    overflow-x:auto!important;
-    overflow-y:hidden!important;
-    padding:5px!important;
-    gap:5px!important;
-    border-radius:13px!important;
-  }
-  #toolbar button{min-width:44px!important;min-height:44px!important;height:44px!important;font-size:13px!important;padding:0 10px!important;white-space:nowrap!important;}
-  #locationBadge{order:0!important;width:auto!important;min-height:44px!important;flex:0 0 auto!important;}
-
-  #drawBar{
-    top:calc(max(6px,env(safe-area-inset-top)) + 56px)!important;
-    bottom:auto!important;
-    left:max(6px,env(safe-area-inset-left))!important;
-    right:auto!important;
-    width:auto!important;
-    max-width:calc(100vw - max(12px,env(safe-area-inset-left) + env(safe-area-inset-right)))!important;
-    height:56px!important;
-    min-height:56px!important;
-    flex-wrap:nowrap!important;
-    justify-content:flex-start!important;
-    overflow-x:auto!important;
-    overflow-y:hidden!important;
-    padding:5px!important;
-    gap:5px!important;
-    border-radius:13px!important;
-  }
-  #drawBar button{flex:0 0 44px!important;width:44px!important;min-width:44px!important;height:44px!important;min-height:44px!important;font-size:27px!important;padding:0!important;}
-  #drawBar #toolBrush,#drawBar #toolRect,#drawBar #toolCircle{font-size:29px!important;}
-  #drawBar input[type=color]{flex:0 0 44px!important;width:44px!important;min-width:44px!important;height:44px!important;}
-  #drawBar input[type=range]{flex:0 0 86px!important;width:86px!important;min-width:86px!important;}
-  #pointBadge{top:calc(max(6px,env(safe-area-inset-top)) + 118px)!important;}
-
-  #popup{bottom:auto!important;top:calc(max(6px,env(safe-area-inset-top)) + 118px)!important;max-height:calc(100vh - 132px - env(safe-area-inset-bottom))!important;}
-}
-@media (orientation:landscape) and (max-height:520px){
-  #toolbar{top:max(4px,env(safe-area-inset-top))!important;bottom:auto!important;left:max(4px,env(safe-area-inset-left))!important;right:auto!important;width:auto!important;max-width:calc(100vw - 8px)!important;max-height:50px!important;}
-  #toolbar button{height:40px!important;min-height:40px!important;min-width:40px!important;font-size:12px!important;padding:0 8px!important;}
-  #locationBadge{min-height:40px!important;}
-  #drawBar{top:calc(max(4px,env(safe-area-inset-top)) + 50px)!important;bottom:auto!important;left:max(4px,env(safe-area-inset-left))!important;right:auto!important;width:auto!important;max-width:calc(100vw - 8px)!important;height:50px!important;min-height:50px!important;}
-  #drawBar button{width:40px!important;min-width:40px!important;height:40px!important;min-height:40px!important;flex-basis:40px!important;font-size:24px!important;}
-  #drawBar input[type=color]{width:40px!important;min-width:40px!important;height:40px!important;flex-basis:40px!important;}
-  #drawBar input[type=range]{width:78px!important;min-width:78px!important;flex-basis:78px!important;}
-}
-
-
-/* ===== TELEFON: ENAKA DVOJNA VRSTICA KOT NA RACUNALNIKU, LE MANJSA ===== */
-@media (max-width:760px), (pointer:coarse){
-  #toolbar{
-    top:max(4px,env(safe-area-inset-top))!important;
-    bottom:auto!important;
-    left:max(4px,env(safe-area-inset-left))!important;
-    right:auto!important;
-    width:max-content!important;
-    max-width:calc(100vw - 8px - env(safe-area-inset-left) - env(safe-area-inset-right))!important;
-    height:38px!important; min-height:38px!important; max-height:38px!important;
-    padding:3px!important; gap:3px!important; border-radius:10px!important;
-    flex-wrap:nowrap!important; justify-content:flex-start!important;
-    overflow-x:auto!important; overflow-y:hidden!important;
-  }
-  #toolbar button,#toolbar #locationBadge{
-    height:32px!important; min-height:32px!important; min-width:32px!important;
-    padding:0 7px!important; font-size:11px!important; line-height:1!important;
-    border-radius:7px!important; flex:0 0 auto!important; white-space:nowrap!important;
-  }
-  #locationBadge{width:auto!important;order:0!important;}
-
-  #drawBar{
-    top:calc(max(4px,env(safe-area-inset-top)) + 42px)!important;
-    bottom:auto!important;
-    left:max(4px,env(safe-area-inset-left))!important;
-    right:auto!important;
-    width:max-content!important;
-    max-width:calc(100vw - 8px - env(safe-area-inset-left) - env(safe-area-inset-right))!important;
-    height:42px!important; min-height:42px!important; max-height:42px!important;
-    padding:3px!important; gap:3px!important; border-radius:10px!important;
-    flex-wrap:nowrap!important; justify-content:flex-start!important;
-    overflow-x:auto!important; overflow-y:hidden!important;
-  }
-  #drawBar button{
-    flex:0 0 34px!important; width:34px!important; min-width:34px!important;
-    height:34px!important; min-height:34px!important; padding:0!important;
-    font-size:22px!important; border-radius:7px!important;
-  }
-  #drawBar #toolBrush,#drawBar #toolRect,#drawBar #toolCircle{font-size:24px!important;}
-  #drawBar input[type=color]{flex:0 0 34px!important;width:34px!important;min-width:34px!important;height:34px!important;padding:2px!important;border-radius:7px!important;}
-  #drawBar input[type=range]{flex:0 0 68px!important;width:68px!important;min-width:68px!important;margin:0 2px!important;}
-  #pointBadge{top:calc(max(4px,env(safe-area-inset-top)) + 88px)!important;}
-  #popup{top:calc(max(4px,env(safe-area-inset-top)) + 88px)!important;bottom:auto!important;max-height:calc(100vh - 98px - env(safe-area-inset-bottom))!important;}
-}
-/* Lezec telefon: vrstici skupaj zavzameta priblizno 70 px, ne tretjine zaslona. */
-@media (orientation:landscape) and (max-height:520px){
-  #toolbar{height:34px!important;min-height:34px!important;max-height:34px!important;padding:2px!important;}
-  #toolbar button,#toolbar #locationBadge{height:30px!important;min-height:30px!important;min-width:30px!important;font-size:10px!important;padding:0 6px!important;}
-  #drawBar{top:calc(max(4px,env(safe-area-inset-top)) + 38px)!important;height:36px!important;min-height:36px!important;max-height:36px!important;padding:2px!important;}
-  #drawBar button{width:30px!important;min-width:30px!important;height:30px!important;min-height:30px!important;flex-basis:30px!important;font-size:20px!important;}
-  #drawBar #toolBrush,#drawBar #toolRect,#drawBar #toolCircle{font-size:22px!important;}
-  #drawBar input[type=color]{width:30px!important;min-width:30px!important;height:30px!important;flex-basis:30px!important;}
-  #drawBar input[type=range]{width:62px!important;min-width:62px!important;flex-basis:62px!important;}
-  #pointBadge{top:calc(max(4px,env(safe-area-inset-top)) + 78px)!important;}
-  #popup{top:calc(max(4px,env(safe-area-inset-top)) + 78px)!important;max-height:calc(100vh - 86px - env(safe-area-inset-bottom))!important;}
-}
-
 </style>
 </head>
 
@@ -1373,15 +1254,15 @@ function positionReaderBy360Hotspot(id){
 
 <div id="toolbar">
 
-  <button id="mapBtn">🗺 ZEMLJEVID</button>
-  <button id="editCurrentPointBtn" type="button">✏️ UREDI TOČKO</button>
+  <button id="mapBtn" type="button" aria-label="Zemljevid" title="Zemljevid">🗺️</button>
+  <button id="editCurrentPointBtn" type="button">✏️ UREDI</button>
   
   <div id="locationBadge" aria-live="polite">📍 JANJA
 
 </div>
 
   <button id="addBtn">
-    + Dodaj AHA!
+    AHA!
   </button>
 
   <button id="zoomInBtn">
@@ -1402,16 +1283,20 @@ function positionReaderBy360Hotspot(id){
 
 </div>
 <div id="drawBar">
-  <button id="toolPencil" type="button" title="Svinčnik">✏️</button>
-  <button id="toolBrush" type="button" title="Čopič">🖌️</button>
-  <button id="toolLine" type="button" title="Črta">╱</button>
-  <button id="toolRect" type="button" title="Pravokotnik">▭</button>
-  <button id="toolCircle" type="button" title="Krog">○</button>
-  <input id="toolColor" type="color" value="#ff0000" title="Barva">
-  <input id="toolSize" type="range" min="2" max="24" value="5" title="Debelina">
-  <button id="toolUndo" type="button" title="Razveljavi">↶</button>
-  <button id="toolClear" type="button" title="Počisti">🗑</button>
+  <button id="toolBrush" type="button" title="Čopič" aria-label="Čopič">🖌️</button>
+  <input id="toolColor" type="color" value="#ff0000" title="Barva" aria-label="Izbira barve">
+  <input id="toolSize" type="range" min="2" max="24" value="5" title="Širina čopiča" aria-label="Širina čopiča">
+  <button id="toolClear" type="button" title="KOŠ" aria-label="KOŠ">🗑️</button>
 </div>
+<!-- Nevidni tehnični elementi za združljivost obstoječe risalne kode. -->
+<div aria-hidden="true" style="display:none!important">
+  <button id="toolPencil" type="button"></button>
+  <button id="toolLine" type="button"></button>
+  <button id="toolRect" type="button"></button>
+  <button id="toolCircle" type="button"></button>
+  <button id="toolUndo" type="button"></button>
+</div>
+
 
 
 <div id="hint">
@@ -1465,7 +1350,7 @@ function positionReaderBy360Hotspot(id){
     <label class="fieldLabel">360° fotografija</label>
     <label class="fileLabel" style="display:block;text-align:center">📷 ZAMENJAJ / DODAJ 360° SLIKO<input id="currentPointFile" type="file" accept="image/*" accept="image/jpeg,image/png,image/webp"></label>
     <div class="editorButtons">
-      <button id="pointAddLearningBtn" type="button">＋ DODAJ AHA!</button>
+      <button id="pointAddLearningBtn" type="button">AHA!</button>
       <button id="pointAddTourBtn" type="button">＋ NOVA TOČKA SPREHODA</button>
       <button id="pointDeleteBtn" type="button">🗑 IZBRIŠI TOČKO</button>
     </div>
@@ -3552,32 +3437,6 @@ function positionPopup(){
 
 
 
-
-/* ===== PREMIČNO AHA BRALNO OKNO - telefon + računalnik ===== */
-function enableAhaDrag(el){
-  if(!el||el.dataset.ahaDrag==='1')return;
-  el.dataset.ahaDrag='1';
-  let active=false,id=null,dx=0,dy=0;
-  el.style.touchAction='none';
-  el.addEventListener('pointerdown',function(e){
-    if(e.target.closest('button,input,textarea,select,a'))return;
-    const r=el.getBoundingClientRect();
-    active=true;id=e.pointerId;dx=e.clientX-r.left;dy=e.clientY-r.top;
-    el.style.position='fixed';el.style.left=r.left+'px';el.style.top=r.top+'px';el.style.right='auto';el.style.bottom='auto';el.style.transform='none';el.style.margin='0';
-    try{el.setPointerCapture(id)}catch(_){}
-  },{passive:true});
-  el.addEventListener('pointermove',function(e){
-    if(!active||e.pointerId!==id)return;
-    e.preventDefault();
-    const r=el.getBoundingClientRect();
-    const maxL=Math.max(6,innerWidth-r.width-6),maxT=Math.max(6,innerHeight-r.height-6);
-    el.style.left=Math.max(6,Math.min(maxL,e.clientX-dx))+'px';
-    el.style.top=Math.max(6,Math.min(maxT,e.clientY-dy))+'px';
-  },{passive:false});
-  const end=e=>{if(!active)return;active=false;try{el.releasePointerCapture(id)}catch(_){}id=null;};
-  el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
-}
-
 /* =========================================================
    NAVADNE AHA TOČKE + RISANJE
    360° risba je shranjena v prostoru, podobno kot AHA točka.
@@ -3600,7 +3459,6 @@ function showNormalAhaCard(h,button){
   normalAhaCardTitle.textContent=h.title||"AHA!";
   normalAhaCardText.textContent=h.description||"";
   normalAhaCard.style.display="block";
-  enableAhaDrag(normalAhaCard);
 
   /* Kartica se postavi neposredno ob kliknjeno AHA točko in ostane znotraj slike. */
   const stage=normalPhotoStage.getBoundingClientRect();
@@ -4022,7 +3880,7 @@ function stopAddMode(){
 
 
   addBtn.textContent =
-    "+ Dodaj AHA!";
+    "AHA!";
 
 
   hint.style.display =
