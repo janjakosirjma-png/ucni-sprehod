@@ -1254,7 +1254,7 @@ function positionReaderBy360Hotspot(id){
 
 <div id="toolbar">
 
-  <button id="mapBtn" type="button" aria-label="Zemljevid" title="Zemljevid">🗺️</button>
+  <button id="mapBtn" title="Zemljevid" aria-label="Zemljevid">🗺️</button>
   <button id="editCurrentPointBtn" type="button">✏️ UREDI</button>
   
   <div id="locationBadge" aria-live="polite">📍 JANJA
@@ -1283,20 +1283,11 @@ function positionReaderBy360Hotspot(id){
 
 </div>
 <div id="drawBar">
-  <button id="toolBrush" type="button" title="Čopič" aria-label="Čopič">🖌️</button>
-  <input id="toolColor" type="color" value="#ff0000" title="Barva" aria-label="Izbira barve">
-  <input id="toolSize" type="range" min="2" max="24" value="5" title="Širina čopiča" aria-label="Širina čopiča">
-  <button id="toolClear" type="button" title="KOŠ" aria-label="KOŠ">🗑️</button>
+  <button id="toolBrush" type="button" title="Čopič">🖌️</button>
+  <input id="toolColor" type="color" value="#ff0000" title="Barva">
+  <input id="toolSize" type="range" min="2" max="24" value="5" title="Debelina">
+  <button id="toolClear" type="button" title="Počisti">🗑</button>
 </div>
-<!-- Nevidni tehnični elementi za združljivost obstoječe risalne kode. -->
-<div aria-hidden="true" style="display:none!important">
-  <button id="toolPencil" type="button"></button>
-  <button id="toolLine" type="button"></button>
-  <button id="toolRect" type="button"></button>
-  <button id="toolCircle" type="button"></button>
-  <button id="toolUndo" type="button"></button>
-</div>
-
 
 
 <div id="hint">
@@ -1350,7 +1341,7 @@ function positionReaderBy360Hotspot(id){
     <label class="fieldLabel">360° fotografija</label>
     <label class="fileLabel" style="display:block;text-align:center">📷 ZAMENJAJ / DODAJ 360° SLIKO<input id="currentPointFile" type="file" accept="image/*" accept="image/jpeg,image/png,image/webp"></label>
     <div class="editorButtons">
-      <button id="pointAddLearningBtn" type="button">AHA!</button>
+      <button id="pointAddLearningBtn" type="button">＋ DODAJ AHA!</button>
       <button id="pointAddTourBtn" type="button">＋ NOVA TOČKA SPREHODA</button>
       <button id="pointDeleteBtn" type="button">🗑 IZBRIŠI TOČKO</button>
     </div>
@@ -1780,8 +1771,8 @@ const normalAhaCardEdit=$("normalAhaCardEdit");
 let openNormalAhaId=null;
 
 const drawBar=$("drawBar");
-const toolPencil=$("toolPencil"),toolBrush=$("toolBrush"),toolLine=$("toolLine"),toolRect=$("toolRect"),toolCircle=$("toolCircle");
-const toolColor=$("toolColor"),toolSize=$("toolSize"),toolUndo=$("toolUndo"),toolClear=$("toolClear");
+const toolBrush=$("toolBrush");
+const toolColor=$("toolColor"),toolSize=$("toolSize"),toolClear=$("toolClear");
 
 
 /* Samodejna prepoznava:
@@ -3546,7 +3537,7 @@ function stopDrawing(){
   normalDrawCanvas.style.pointerEvents="none";
   panoDrawCanvas.style.pointerEvents="none";
   panoDrawCanvas.getContext("2d").clearRect(0,0,panoDrawCanvas.width,panoDrawCanvas.height);
-  [toolPencil,toolBrush,toolLine,toolRect,toolCircle].forEach(b=>b.classList.remove("active"));
+  [toolBrush].forEach(b=>b.classList.remove("active"));
 }
 function chooseDrawing(mode,btn){
   /* Ponoven pritisk na isto orodje ga izklopi. */
@@ -3561,14 +3552,10 @@ function chooseDrawing(mode,btn){
   normalDrawCanvas.style.pointerEvents="none";
   panoDrawCanvas.style.pointerEvents="none";
   activeCanvas().style.pointerEvents="auto";
-  [toolPencil,toolBrush,toolLine,toolRect,toolCircle].forEach(b=>b.classList.remove("active"));
+  [toolBrush].forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
 }
-toolPencil.onclick=()=>chooseDrawing("pencil",toolPencil);
 toolBrush.onclick=()=>chooseDrawing("brush",toolBrush);
-toolLine.onclick=()=>chooseDrawing("line",toolLine);
-toolRect.onclick=()=>chooseDrawing("rect",toolRect);
-toolCircle.onclick=()=>chooseDrawing("circle",toolCircle);
 
 function pt(c,e){
   const r=c.getBoundingClientRect();
@@ -3880,7 +3867,7 @@ function stopAddMode(){
 
 
   addBtn.textContent =
-    "AHA!";
+    "+ Dodaj AHA!";
 
 
   hint.style.display =
