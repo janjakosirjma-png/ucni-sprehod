@@ -1022,6 +1022,15 @@ function positionReaderBy360Hotspot(id){
   #pointBadge{top:118px!important;}
 }
 
+
+/* KONČNA ZAHTEVA: brez +/-; risanje samo čopič, barva, širina, koš. */
+#zoomInBtn, #zoomOutBtn,
+#drawBar #toolPencil, #drawBar #toolLine, #drawBar #toolRect, #drawBar #toolCircle, #drawBar #toolUndo {
+  display:none !important;
+  visibility:hidden !important;
+  width:0 !important; min-width:0 !important; height:0 !important; min-height:0 !important;
+  flex:0 0 0 !important; padding:0 !important; margin:0 !important; border:0 !important;
+}
 </style>
 </head>
 
